@@ -1,0 +1,85 @@
+"use client";
+
+import { useState } from "react";
+
+export default function ContactSection() {
+      const [sent, setSent] = useState(false);
+      const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSent(true);
+  };
+
+    return (
+        <>
+            {/* CONTACT */}
+            <section id="contact" className="bg-[#1a1818] px-10 py-28">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-start">
+                    <div>
+                        <div className="flex items-center gap-3 text-[#ff7c5c] text-xs font-medium tracking-[0.2em] uppercase mb-3">
+                            <span className="block w-6 h-px bg-[#ff7c5c]" />
+                            Contact
+                        </div>
+                        <h2 className="font-syne font-extrabold text-[clamp(2rem,4vw,3rem)] tracking-[-0.03em] leading-tight mb-6">
+                            Got a project in mind?
+                        </h2>
+                        <p className="text-white/45 leading-relaxed font-light mb-8 max-w-sm">
+                            I'm always open to interesting work. Drop me a message and I'll get back to you within 48 hours.
+                        </p>
+                        <div className="flex flex-col gap-5">
+                            {[{ label: "Email", val: "hello@apfreelance.com" }, { label: "Based in", val: "Available worldwide" }].map((d) => (
+                                <div key={d.label}>
+                                    <div className="text-[#ff7c5c] text-xs tracking-[0.15em] uppercase mb-1">{d.label}</div>
+                                    <div className="text-white/60 text-sm">{d.val}</div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div>
+                        {sent ? (
+                            <div className="text-[#ff7c5c] text-sm p-4 border border-[#ff7c5c]/20 bg-[#ff7c5c]/5">
+                                Message sent — I'll be in touch soon.
+                            </div>
+                        ) : (
+                            <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                                {[
+                                    { label: "Name", type: "text", key: "name", placeholder: "Your name" },
+                                    { label: "Email", type: "email", key: "email", placeholder: "your@email.com" },
+                                ].map((f) => (
+                                    <div key={f.key} className="flex flex-col gap-1.5">
+                                        <label className="text-white/30 text-xs tracking-widest uppercase">{f.label}</label>
+                                        <input
+                                            type={f.type}
+                                            placeholder={f.placeholder}
+                                            required
+                                            className="bg-white/4 border border-white/8 text-white placeholder-white/20 px-4 py-3 text-sm font-light outline-none focus:border-[#ff7c5c]/40 transition-colors"
+                                            onChange={(e) => setFormData({ ...formData, [f.key]: e.target.value })}
+                                        />
+                                    </div>
+                                ))}
+                                <div className="flex flex-col gap-1.5">
+                                    <label className="text-white/30 text-xs tracking-widest uppercase">Message</label>
+                                    <textarea
+                                        placeholder="Tell me about your project..."
+                                        required
+                                        rows={5}
+                                        className="bg-white/4 border border-white/[8 text-white placeholder-white/20 px-4 py-3 text-sm font-light outline-none focus:border-[#ff7c5c]/40 transition-colors resize-y"
+                                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                                    />
+                                </div>
+                                <button
+                                    type="submit"
+                                    className="self-start bg-linear-to-br from-[#ff7c5c] to-[#ff5f7e] text-white font-medium px-8 py-3.5 hover:opacity-85 transition-opacity"
+                                >
+                                    Send Message
+                                </button>
+                            </form>
+                        )}
+                    </div>
+                </div>
+            </section>
+        </>
+    )
+}

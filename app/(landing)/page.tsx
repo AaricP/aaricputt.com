@@ -1,11 +1,21 @@
-import LandingClient from "@/components/LandingClient"
+
 import Posts from "@/components/Posts"
+import HeroSection from "./HeroSection"
+import RecentProjectsSection from "./RecentProjectsSection"
+import AboutSection from "./AboutSection"
+import ContactSection from "./ContactSection"
+import LandingLayout from "./LandingLayout"
 
 export default function Home() {
   return (
     <>
-      <LandingClient />
-      <Posts />
+      <LandingLayout>
+        <HeroSection />
+        <RecentProjectsSection />
+        <AboutSection />
+        <ContactSection />
+        <Posts />
+      </LandingLayout>
     </>
   )
 }

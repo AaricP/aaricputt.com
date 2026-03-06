@@ -1,5 +1,4 @@
 import { prisma } from './prisma'
-import { Post, User } from '../generated/prisma'
 
 // Get all posts with their author
 export async function getPosts() {
