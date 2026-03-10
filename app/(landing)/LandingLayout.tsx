@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 export default function LandingLayout({ children }: { children: React.ReactNode }) {
@@ -37,15 +38,15 @@ export default function LandingLayout({ children }: { children: React.ReactNode 
           <ul className="hidden md:flex gap-10 list-none">
             {["home", "projects"].map((s) => (
               <li key={s}>
-                <a href={s === 'projects' ? '/projects' : '/'} className="text-white/50 hover:text-white transition-colors text-sm font-medium capitalize tracking-wide">
+                <Link href={s === 'projects' ? '/projects' : '/'} className="text-white/50 hover:text-white transition-colors text-sm font-medium capitalize tracking-wide">
                   {s}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
-          <a href="/login" className="bg-linear-to-br from-[#ff7c5c] to-[#ff5f7e] text-white text-sm font-medium px-5 py-2.5 hover:opacity-85 transition-opacity">
+          <Link href="/login" className="bg-linear-to-br from-[#ff7c5c] to-[#ff5f7e] text-white text-sm font-medium px-5 py-2.5 hover:opacity-85 transition-opacity">
             Sign in
-          </a>
+          </Link>
         </nav>
 
         {children}

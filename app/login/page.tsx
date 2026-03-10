@@ -1,4 +1,5 @@
 import { signIn, signUp } from '@/app/auth/actions'
+import Link from 'next/link';
 
 export default async function LoginPage({
   searchParams,
@@ -46,9 +47,9 @@ export default async function LoginPage({
         <div className="w-full max-w-sm relative">
 
           {/* logo */}
-          <a href="/" className="font-syne gradient-text font-extrabold text-xl tracking-tight block mb-12">
+          <Link href="/" className="font-syne gradient-text font-extrabold text-xl tracking-tight block mb-12">
             AP Freelance
-          </a>
+          </Link>
 
           {/* heading */}
           <h1 className="font-syne font-extrabold text-3xl tracking-tight text-white mb-1">
@@ -105,12 +106,12 @@ export default async function LoginPage({
           {/* toggle sign in / sign up */}
           <p className="text-white/30 text-sm text-center mt-6 font-light">
             {isSignUp ? 'Already have an account?' : "Don't have an account?"}{' '}
-            <a
+            <Link
               href={isSignUp ? '/login' : '/login?mode=signup'}
               className="text-[#ff7c5c] hover:opacity-80 transition-opacity"
             >
               {isSignUp ? 'Sign in' : 'Sign up'}
-            </a>
+            </Link>
           </p>
 
         </div>
