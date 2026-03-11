@@ -16,7 +16,7 @@ export default function HeroSection() {
                 {/* Left — photo block */}
                 <div className="relative flex justify-center">
                     <img
-                        src="profile.jpeg"
+                        src="images/profile.jpeg"
                         alt="Profile"
                         className="max-h-[600px] w-auto object-contain block rounded-2xl"
                         style={{
@@ -53,10 +53,7 @@ export default function HeroSection() {
                         ))}
                     </div> */}
                     <div className="flex gap-5 items-center flex-wrap mt-10">
-                        <Link href="#contact" className="bg-gradient-to-br from-[#ff7c5c] to-[#ff5f7e] text-white font-medium px-8 py-3.5 hover:opacity-85 hover:-translate-y-0.5 transition-all">
-                            Start a Project
-                        </Link>
-                        <Link href="/projects" className="text-white/45 hover:text-white transition-colors text-sm font-medium flex items-center gap-2">
+                        <Link href="/projects" className="bg-gradient-to-br from-[#ff7c5c] to-[#ff5f7e] text-white font-medium px-8 py-3.5 hover:opacity-85 hover:-translate-y-0.5 transition-all">
                             See my work →
                         </Link>
                     </div>

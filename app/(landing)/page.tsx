@@ -12,7 +12,7 @@ export default function Home() {
         <HeroSection />
         <RecentProjectsSection />
         <ContactSection />
-        <Posts />
+        {/* <Posts /> */}
       </LandingLayout>
     </>
   )

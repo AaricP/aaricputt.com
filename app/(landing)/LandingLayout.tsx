@@ -34,7 +34,7 @@ export default function LandingLayout({ children }: { children: React.ReactNode 
 
         {/* NAV */}
         <nav className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-10 py-5 transition-all duration-300 ${scrolled ? "bg-[#0f0e0e]/90 backdrop-blur-md border-b border-white/5" : ""}`}>
-          <span className="font-syne gradient-text font-extrabold text-xl tracking-tight">AP Freelance</span>
+          <span className="font-syne gradient-text font-extrabold text-xl tracking-tight">AP</span>
           <ul className="hidden md:flex gap-10 list-none">
             {["home", "projects"].map((s) => (
               <li key={s}>
