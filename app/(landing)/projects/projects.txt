@@ -2,7 +2,7 @@ const projects = [
   {
     id: 1,
     title: "AP Freelance Portfolio",
-    description: "My personal freelance portfolio site built with Next.js and TypeScript. The site you're on right now.",
+    description: "My personal portfolio site built with Next.js and TypeScript. The site you're on right now.",
     image: "https://placehold.co/800x500/1a1818/ff7c5c?text=AP+Freelance",
     tech: ["Next.js", "TypeScript", "Tailwind"],
     githubUrl: "https://github.com/aaricp/apfreelance",

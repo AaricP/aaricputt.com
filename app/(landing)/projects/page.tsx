@@ -61,31 +61,6 @@ export default async function ProjectsPage() {
                 }
             `}</style>
 
-      <div className="bg-[#0f0e0e] text-white min-h-screen" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-
-        {/* NAV */}
-        <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-10 py-5 bg-[#0f0e0e]/90 backdrop-blur-md border-b border-white/5">
-          <span className="font-syne gradient-text font-extrabold text-xl tracking-tight">AP</span>
-          <ul className="hidden md:flex gap-10 list-none">
-            {["home", "projects"].map((s) => (
-              <li key={s}>
-                <Link
-                  href={s === "projects" ? "/projects" : "/"}
-                  className="text-white/50 hover:text-white transition-colors text-sm font-medium capitalize tracking-wide"
-                >
-                  {s}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <Link
-            href="/#contact"
-            className="bg-gradient-to-br from-[#ff7c5c] to-[#ff5f7e] text-white text-sm font-medium px-5 py-2.5 hover:opacity-85 transition-opacity"
-          >
-            Contact Me
-          </Link>
-        </nav>
-
         {/* HEADER */}
         <div className="px-10 pt-36 pb-12 border-b border-white/5">
           <div className="flex items-center gap-3 text-[#ff7c5c] text-xs font-medium tracking-[0.2em] uppercase mb-4">
@@ -120,10 +95,9 @@ export default async function ProjectsPage() {
                   >
                     {languageColors[repo.language]?.label ?? "?"}
                   </div>
-                  <span className="text-white/20 text-xs font-light">
-                    {new Date(repo.created_at).toLocaleDateString("en-US", { month: "short", year: "numeric" })}
-                    {" — "}
-                    {new Date(repo.updated_at).toLocaleDateString("en-US", { month: "short", year: "numeric" })}
+                  <span className="text-white/20 text-xs font-light flex gap-3">
+                    <span>Created {new Date(repo.created_at).toLocaleDateString("en-US", { month: "short", year: "numeric" })}</span>
+                    <span>Updated {new Date(repo.updated_at).toLocaleDateString("en-US", { month: "short", year: "numeric" })}</span>
                   </span>
                 </div>
 
@@ -157,7 +131,7 @@ export default async function ProjectsPage() {
                         rel="noopener noreferrer"
                         className="text-white text-xs font-medium hover:text-[#ff7c5c] transition-colors flex items-center gap-1.5"
                       >
-                        ↗ Live Site
+                        Live Site
                       </Link>
                     )}
                     <Link
@@ -166,7 +140,7 @@ export default async function ProjectsPage() {
                       rel="noopener noreferrer"
                       className="text-white/40 text-xs font-medium hover:text-white transition-colors flex items-center gap-1.5"
                     >
-                      ↗ GitHub
+                      GitHub
                     </Link>
                   </div>
                 </div>
@@ -174,13 +148,6 @@ export default async function ProjectsPage() {
             ))}
           </div>
         </div>
-
-        {/* FOOTER */}
-        <footer className="px-10 py-6 border-t border-white/5 flex justify-between items-center text-white/20 text-xs">
-          <span>© {new Date().getFullYear()} AP Freelance</span>
-        </footer>
-
-      </div>
     </>
   );
 }
