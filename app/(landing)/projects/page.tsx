@@ -72,7 +72,7 @@ export default async function ProjectsPage() {
               My <span className="gradient-text">Projects.</span>
             </h1>
             <p className="text-white/40 text-sm max-w-xs leading-relaxed font-light">
-              A collection of personal and academic projects built across different stacks and problem spaces.
+              A collection of personal and academic projects built across different stacks.
             </p>
           </div>
         </div>

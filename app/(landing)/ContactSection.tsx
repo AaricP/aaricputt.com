@@ -6,10 +6,15 @@ export default function ContactSection() {
     const [sent, setSent] = useState(false);
     const [formData, setFormData] = useState({ name: "", email: "", message: "" });
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        setSent(true);
-    };
+    const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  await fetch("/api/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(formData),
+  });
+  setSent(true);
+};
 
     return (
         <section id="contact" className="bg-[#1a1818] px-10 py-28">
