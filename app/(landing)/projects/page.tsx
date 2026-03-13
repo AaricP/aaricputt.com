@@ -20,14 +20,14 @@ const languageColors: Record<string, { color: string; label: string }> = {
 
 async function getRepos() {
   const res = await fetch("https://api.github.com/users/aaricp/repos?sort=updated", {
-    next: { revalidate: 604800 }
+    next: { revalidate: 21600 }
   });
   return res.json();
 }
 
 async function getLanguages(repoName: string) {
   const res = await fetch(`https://api.github.com/repos/aaricp/${repoName}/languages`, {
-    next: { revalidate: 604800 }
+    next: { revalidate: 21600 }
   });
   return res.json();
 }

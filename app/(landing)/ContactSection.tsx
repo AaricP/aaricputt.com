@@ -28,7 +28,7 @@ export default function ContactSection() {
                         Open to new opportunities.
                     </h2>
                     <p className="text-white/45 leading-relaxed font-light mb-8 max-w-sm">
-                        I'm currently looking for full-time role in web development. If you think I'd be a good fit for your team, I'd love to hear from you.
+                        I'm currently looking for a full-time role in web development. If you think I'd be a good fit for your team, I'd love to hear from you.
                     </p>
                 </div>
 
