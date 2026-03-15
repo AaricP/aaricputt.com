@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     siteName: "Aaric Putt",
     images: [
       {
-        url: "https://aaricputt.com/og-image.png",
+        url: "https://aaricputt.com/images/og-image.png",
         width: 1200,
         height: 630,
       },
