@@ -1,5 +1,5 @@
 export async function getRepos(perPage: string = "") {
-  const res = await fetch(`https://api.github.com/users/aaricp/repos?sort=updated${perPage}`, {
+  const res = await fetch(`https://api.github.com/users/aaricp/repos?sort=pushed${perPage}`, {
     next: { revalidate: 21600 }
   });
   return res.json();

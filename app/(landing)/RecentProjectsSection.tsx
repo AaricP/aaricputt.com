@@ -43,7 +43,7 @@ export default async function RecentProjectsSection() {
                                     ))
                                 }
                             </div>
-                            <span className="text-white/20 text-xs font-light shrink-0">{new Date(repo.updated_at).getFullYear()}</span>
+                            <span className="text-white/20 text-xs font-light shrink-0">{new Date(repo.pushed_at).getFullYear()}</span>
                         </div>
                     </div>
                 ))}
