@@ -1,37 +1,15 @@
 import Link from "next/link";
+import { getRepos, getLanguages } from "@/lib/projects";
 
-export default function RecentProjectsSection() {
+export default async function RecentProjectsSection() {
+    const repos = await getRepos("&per_page=4");
 
-    const projects = [
-        {
-            num: "01",
-            title: "Canvas LMS Clone",
-            desc: "Built a React app from scratch using Vite, replicating the Canvas LMS UI/UX with admin controls, dynamic modules, and client-side navigation.",
-            tech: "React · Vite · Tailwind · MUI · React Router",
-            year: "2024",
-        },
-        {
-            num: "02",
-            title: "Mentor Web App",
-            desc: "Transformed a static HTML site into a dynamic Express.js web app using MVC architecture, Sequelize ORM, and EJS templates.",
-            tech: "Express.js · EJS · Sequelize · SQL",
-            year: "2025",
-        },
-        {
-            num: "03",
-            title: "MultiShop",
-            desc: "Built the full frontend for a mock online store in React against a provided backend for my Client-Side Web Development class.",
-            tech: "React · JavaScript · CSS",
-            year: "2025",
-        },
-        {
-            num: "04",
-            title: "AP Freelance Portfolio",
-            desc: "Designed and built this portfolio site from scratch — the one you're looking at right now.",
-            tech: "Next.js · TypeScript · Tailwind",
-            year: "2025",
-        },
-    ];
+    const reposWithLanguages = await Promise.all(
+        repos.map(async (repo: any) => ({
+            ...repo,
+            languages: await getLanguages(repo.name)
+        }))
+    );
 
     return (
         <section id="projects" className="bg-[#1a1818] px-10 py-28">
@@ -47,17 +25,25 @@ export default function RecentProjectsSection() {
                     View all projects →
                 </Link>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border border-white/5 divide-x divide-y divide-white/5">
-                {projects.map((p) => (
-                    <div key={p.num} className="relative bg-[#1a1818] p-10 hover:bg-white/2 transition-colors flex flex-col justify-between gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                {reposWithLanguages.map((repo: any, index: number) => (
+                    <div key={repo.id} className="relative bg-[#0f0e0e] border border-white/5 rounded-2xl p-8 hover:border-[#ff7c5c]/20 hover:bg-white/[0.02] transition-all flex flex-col justify-between gap-8">
                         <div>
-                            <div className="font-syne text-xs font-bold text-[#ff7c5c] tracking-widest mb-6">{p.num}</div>
-                            <h3 className="font-syne font-bold text-lg tracking-tight mb-3">{p.title}</h3>
-                            <p className="text-white/40 text-sm leading-relaxed font-light">{p.desc}</p>
+                            <div className="font-syne text-xs font-bold text-[#ff7c5c] tracking-widest mb-6">
+                                {String(index + 1).padStart(2, '0')}
+                            </div>
+                            <h3 className="font-syne font-bold text-lg tracking-tight mb-3">{repo.name}</h3>
+                            <p className="text-white/40 text-sm leading-relaxed font-light">{repo.description}</p>
                         </div>
-                        <div className="flex items-center justify-between">
-                            <span className="text-white/20 text-xs font-light">{p.tech}</span>
-                            <span className="text-white/20 text-xs font-light shrink-0 ml-4">{p.year}</span>
+                        <div className="flex items-center justify-between flex-wrap gap-2 pt-4 border-t border-white/5">
+                            <div className="flex gap-2 flex-wrap">
+                                {Object.keys(repo.languages).length > 0 &&
+                                    Object.keys(repo.languages).map((l: string) => (
+                                        <span key={l} className="text-[#ff7c5c] text-xs border border-[#ff7c5c]/15 px-2 py-0.5 rounded-full bg-[#ff7c5c]/5">{l}</span>
+                                    ))
+                                }
+                            </div>
+                            <span className="text-white/20 text-xs font-light shrink-0">{new Date(repo.created_at).getFullYear()}</span>
                         </div>
                     </div>
                 ))}

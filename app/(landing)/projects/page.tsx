@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getRepos, getLanguages } from "@/lib/projects";
 
 const languageColors: Record<string, { color: string; label: string }> = {
   JavaScript: { color: "#f1e05a", label: "JS" },
@@ -17,20 +18,6 @@ const languageColors: Record<string, { color: string; label: string }> = {
   Kotlin: { color: "#A97BFF", label: "KT" },
   Shell: { color: "#89e051", label: "SH" },
 };
-
-async function getRepos() {
-  const res = await fetch("https://api.github.com/users/aaricp/repos?sort=updated", {
-    next: { revalidate: 21600 }
-  });
-  return res.json();
-}
-
-async function getLanguages(repoName: string) {
-  const res = await fetch(`https://api.github.com/repos/aaricp/${repoName}/languages`, {
-    next: { revalidate: 21600 }
-  });
-  return res.json();
-}
 
 export default async function ProjectsPage() {
   const repos = await getRepos();
