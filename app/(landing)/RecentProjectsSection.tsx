@@ -2,11 +2,12 @@ import Link from "next/link";
 import { getRepos, getLanguages } from "@/lib/projects";
 
 export default async function RecentProjectsSection() {
-    const repos = await getRepos("&per_page=4");
+    const repos = await getRepos("&per_page=5");
 
     const reposWithLanguages = await Promise.all(
         repos
         .filter((repo: any) => repo.name !== "aaricputt.com")
+        .slice(0, 4)
         .map(async (repo: any) => ({
             ...repo,
             languages: await getLanguages(repo.name)
