@@ -5,7 +5,9 @@ export default async function RecentProjectsSection() {
     const repos = await getRepos("&per_page=4");
 
     const reposWithLanguages = await Promise.all(
-        repos.map(async (repo: any) => ({
+        repos
+        .filter((repo: any) => repo.name !== "aaricputt.com")
+        .map(async (repo: any) => ({
             ...repo,
             languages: await getLanguages(repo.name)
         }))

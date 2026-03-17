@@ -7,7 +7,7 @@ export async function getRepos(perPage: string = "") {
 
 export async function getLanguages(repoName: string) {
   const res = await fetch(`https://api.github.com/repos/aaricp/${repoName}/languages`, {
-    next: { revalidate: 21600 }
+    next: { revalidate: 21600  }
   });
   return res.json();
 }

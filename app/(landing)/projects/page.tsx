@@ -23,7 +23,9 @@ export default async function ProjectsPage() {
   const repos = await getRepos();
 
   const reposWithLanguages = await Promise.all(
-    repos.map(async (repo: any) => ({
+    repos
+    .filter((repo: any) => repo.name !== "aaricputt.com")
+    .map(async (repo: any) => ({
       ...repo,
       languages: await getLanguages(repo.name)
     }))
