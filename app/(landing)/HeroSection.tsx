@@ -1,12 +1,6 @@
 import Link from "next/link";
 
 export default function HeroSection() {
-    // const stats = [
-    //     { num: "50+", label: "Projects delivered" },
-    //     { num: "5yr", label: "Experience" },
-    //     { num: "100%", label: "Remote friendly" },
-    //     { num: "48h", label: "Response time" },
-    // ];
 
     return (
         <section id="about" className="relative min-h-screen flex items-center px-15 pt-32 pb-16 overflow-hidden">
@@ -44,18 +38,15 @@ export default function HeroSection() {
                     <p className="text-white/45 leading-relaxed font-light">
                         Currently working as a Software Support Technician at EFORCE, where I look into error logs, reproduce bugs, and write SQL scripts for law enforcement clients. I care about code that makes people's lives easier.
                     </p>
-                    {/* <div className="grid grid-cols-2 gap-8 mt-10 pt-8 border-t border-white/8">
-                        {stats.map((s) => (
-                            <div key={s.label}>
-                                <div className="font-syne font-extrabold text-4xl gradient-text tracking-tight leading-none">{s.num}</div>
-                                <div className="text-white/35 text-sm mt-1 font-light">{s.label}</div>
-                            </div>
-                        ))}
-                    </div> */}
                     <div className="flex gap-5 items-center flex-wrap mt-10">
-                        <Link href="/projects" className="bg-gradient-to-br from-[#ff7c5c] to-[#ff5f7e] text-white font-medium px-8 py-3.5 hover:opacity-85 hover:-translate-y-0.5 transition-all">
-                            See my work →
-                        </Link>
+                        <div className="flex gap-5 items-center flex-wrap mt-10">
+                            <Link href="/projects" className="bg-gradient-to-br from-[#ff7c5c] to-[#ff5f7e] text-white font-medium px-8 py-3.5 hover:opacity-85 hover:-translate-y-0.5 transition-all">
+                                See my work →
+                            </Link>
+                            <Link href="/resume" className="text-white/45 hover:text-white transition-colors text-sm font-medium">
+                                View Resume →
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </div>
