@@ -18,7 +18,7 @@ export default function AboutPage() {
         },
         {
             company: "ATAT Inc.",
-            location: "",
+            location: "Logan, UT",
             role: "Database & Inventory Manager",
             period: "Feb 2022 – Oct 2025",
             bullets: [
