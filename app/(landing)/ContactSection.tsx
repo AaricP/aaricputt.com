@@ -25,10 +25,10 @@ export default function ContactSection() {
                         Get In Touch
                     </div>
                     <h2 className="font-syne font-extrabold text-[clamp(2rem,4vw,3rem)] tracking-[-0.03em] leading-tight mb-6">
-                        Open to new opportunities.
+                        Need a website built or improved?
                     </h2>
                     <p className="text-white/45 leading-relaxed font-light mb-8 max-w-sm">
-                        I'm currently looking for a full-time role in web development. If you think I'd be a good fit for your team, I'd love to hear from you.
+                        I take on freelance web projects, helping clients design and build fast, modern websites. If you need something built or improved, I’m ready to get started.
                     </p>
                 </div>
 
