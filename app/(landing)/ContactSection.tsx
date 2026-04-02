@@ -41,7 +41,7 @@ export default function ContactSection() {
                         <form onSubmit={handleSubmit} className="flex flex-col gap-5">
                             {[
                                 { label: "Your Name", type: "text", key: "name", placeholder: "John Doe" },
-                                { label: "Work Email", type: "email", key: "email", placeholder: "john@company.com" },
+                                { label: "Email", type: "email", key: "email", placeholder: "john@email.com" },
                             ].map((f) => (
                                 <div key={f.key} className="flex flex-col gap-1.5">
                                     <label className="text-white/30 text-xs tracking-widest uppercase">{f.label}</label>
