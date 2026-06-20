@@ -60,6 +60,7 @@ export default async function ProjectsPage() {
 							created_at: "2026-02-01T00:00:00Z",
 							updated_at: new Date().toISOString(),
 							homepage: "https://laser-cutter-3d.vercel.app/",
+							video_tutorial: "https://youtu.be/nUPx1j0szI0",
 							language: "TypeScript",
 							languages: {
 								'Next.js': 1,

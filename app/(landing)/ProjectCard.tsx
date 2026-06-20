@@ -1,27 +1,30 @@
 import Link from "next/link";
 
 export default function ProjectCard({ repo }: { repo: any }) {
-	
+
 	const languageColors: Record<string, { color: string; label: string }> = {
-  JavaScript: { color: "#f1e05a", label: "JS" },
-  TypeScript: { color: "#3178c6", label: "TS" },
-  Python: { color: "#3572A5", label: "PY" },
-  HTML: { color: "#e34c26", label: "HTML" },
-  CSS: { color: "#563d7c", label: "CSS" },
-  EJS: { color: "#a91e50", label: "EJS" },
-  Java: { color: "#b07219", label: "Java" },
-  "C++": { color: "#f34b7d", label: "C++" },
-  "C#": { color: "#178600", label: "C#" },
-  Ruby: { color: "#701516", label: "RB" },
-  Go: { color: "#00ADD8", label: "Go" },
-  Rust: { color: "#dea584", label: "RS" },
-  Swift: { color: "#F05138", label: "SW" },
-  Kotlin: { color: "#A97BFF", label: "KT" },
-  Shell: { color: "#89e051", label: "SH" },
-};
-	
+		JavaScript: { color: "#f1e05a", label: "JS" },
+		TypeScript: { color: "#3178c6", label: "TS" },
+		Python: { color: "#3572A5", label: "PY" },
+		HTML: { color: "#e34c26", label: "HTML" },
+		CSS: { color: "#563d7c", label: "CSS" },
+		EJS: { color: "#a91e50", label: "EJS" },
+		Java: { color: "#b07219", label: "Java" },
+		"C++": { color: "#f34b7d", label: "C++" },
+		"C#": { color: "#178600", label: "C#" },
+		Ruby: { color: "#701516", label: "RB" },
+		Go: { color: "#00ADD8", label: "Go" },
+		Rust: { color: "#dea584", label: "RS" },
+		Swift: { color: "#F05138", label: "SW" },
+		Kotlin: { color: "#A97BFF", label: "KT" },
+		Shell: { color: "#89e051", label: "SH" },
+	};
+
 	return (
-		<div key={repo.id} className="project-card group bg-[#161414] rounded-2xl flex flex-col overflow-hidden border border-white/5">
+		<div
+			key={repo.id}
+			className="project-card group relative bg-[#161414] rounded-2xl flex flex-col overflow-hidden border border-white/5"
+		>
 
 			{/* Card Header */}
 			<div className="px-7 py-5 border-b border-white/5 flex items-center justify-between">
@@ -63,7 +66,7 @@ export default function ProjectCard({ repo }: { repo: any }) {
 				)}
 
 				{/* Links */}
-				<div className="flex gap-5 pt-5 border-t border-white/5">
+				<div className="flex gap-5 pt-5 border-t border-white/5 relative">
 					{repo.homepage && (
 						<Link
 							href={repo.homepage}
@@ -82,6 +85,17 @@ export default function ProjectCard({ repo }: { repo: any }) {
 							className="text-white/40 text-xs font-medium hover:text-white transition-colors flex items-center gap-1.5"
 						>
 							GitHub
+						</Link>
+					)}
+					{/* Video Tutorial Badge */}
+					{repo.video_tutorial && (
+						<Link
+							href={repo.video_tutorial}
+							target="_blank"
+							rel="noopener noreferrer"
+							className="absolute top-4 right-0 z-20 bg-[#ff7c5c] hover:bg-[#ff946f] text-black text-[11px] font-semibold px-3 py-1.5 rounded-full shadow-lg transition-all duration-200 hover:scale-105"
+						>
+							▶ Tutorial
 						</Link>
 					)}
 				</div>
