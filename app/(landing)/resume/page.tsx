@@ -33,29 +33,32 @@ export default function AboutPage() {
 	};
 
 	const experience = [
-		{
-			company: "EFORCE",
-			location: "Providence, UT",
-			role: "Software Support Technician",
-			period: "Oct 2025 – Present",
-			bullets: [
-				"Developed 60+ ad hoc SQL reports (10–300+ lines) supporting operational and analytical requests for law enforcement agencies",
-				"Implemented a full-stack bug fix using C#, HTML, and SQL to improve report accuracy",
-				"Communicate technical issues and reporting results to non-technical stakeholders, ensuring accurate understanding of software behavior and data outputs",
-			],
-		},
-		{
-			company: "ATAT Inc.",
-			location: "Logan, UT",
-			role: "Database & Inventory Manager",
-			period: "Feb 2022 – Oct 2025",
-			bullets: [
-				"Maintained a database of 1,000+ products supporting purchasing decisions for a business generating $7M+ annually",
-				"Wrote SQL queries and reporting tools to improve inventory management and business decision-making",
-				"Developed automated dashboards in Microsoft Access, Excel, and Google Sheets to reduce inventory errors and improve operational efficiency",
-			],
-		},
-	];
+	{
+		company: "EFORCE",
+		location: "Providence, UT",
+		role: "Software Support Technician",
+		period: "Oct 2025 – Present",
+		bullets: [
+			"Implemented a full-stack bug fix using C#, HTML, and SQL to improve report accuracy",
+			"Built and optimized a SQL Server stored procedure with 16 CTEs and 43 queries for jail reporting across 400+ law-enforcement agencies; merged via Git/Azure DevOps for production deployment",
+			"Developed 70+ ad hoc SQL reports ranging from 10–300 lines supporting operational and analytical requests from law enforcement agencies",
+			"Investigated, reproduced, and documented 80+ software bugs by analyzing application workflows, SQL databases, and source code, providing developers with detailed replication steps and technical findings",
+			"Configured API and SFTP integrations between external agency systems and the application",
+		],
+	},
+	{
+		company: "ATAT Inc.",
+		location: "Logan, UT",
+		role: "Database & Inventory Manager",
+		period: "Feb 2022 – Oct 2025",
+		bullets: [
+			"Managed and improved a database of ~1,000 products to support decisions driving $7M+ in revenue",
+			"Wrote SQL queries to streamline inventory management and support business decision-making",
+			"Developed automated inventory dashboards in Access, Excel, and Google Sheets, resulting in significantly fewer inventory errors and faster product location times",
+		],
+	},
+];
+
 
 	return (
 		<div className="bg-[#0f0e0e] text-white min-h-screen" style={{ fontFamily: "'DM Sans', sans-serif" }}>
