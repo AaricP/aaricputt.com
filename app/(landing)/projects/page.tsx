@@ -53,14 +53,16 @@ export default async function ProjectsPage() {
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 					<ProjectCard
 						repo={{
-							id: "LaserCutter3D",
-							name: "LaserCutter3D",
+							id: "Arbol3D",
+							name: "Arbol3D",
+							theme: "arbol3d",
+							logo: "/images/arbol3d.svg",
 							description:
-								"In progress: A 3D laser cutter design web app for creating wooden cutout designs with auto-generated blueprints and laser-ready SVG exports.",
+								"Assembly instructions for laser-cut crafts. Model a project in 3D, break it into step-by-step build instructions, and export numbered, nested cut sheets (SVG, DXF, PDF) ready for the laser.",
 							created_at: "2026-02-01T00:00:00Z",
 							updated_at: new Date().toISOString(),
-							homepage: "https://laser-cutter-3d.vercel.app/",
-							video_tutorial: "https://youtu.be/98mJee2l02E",
+							homepage: "https://arbol3d.com",
+							video_tutorial: "https://arbol3d.com/tutorial",
 							language: "TypeScript",
 							languages: {
 								'Next.js': 1,
