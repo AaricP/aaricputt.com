@@ -62,7 +62,6 @@ export default async function ProjectsPage() {
 							created_at: "2026-02-01T00:00:00Z",
 							updated_at: new Date().toISOString(),
 							homepage: "https://arbol3d.com",
-							video_tutorial: "https://arbol3d.com/tutorial",
 							language: "TypeScript",
 							languages: {
 								'Next.js': 1,

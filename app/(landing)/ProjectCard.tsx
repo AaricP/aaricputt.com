@@ -30,7 +30,7 @@ export default function ProjectCard({ repo }: { repo: any }) {
 		description: string;
 		tag: string;
 		liveLink: string;
-		tutorial: string;
+		tutorial?: string;
 	}> = {
 		default: {
 			card: "bg-[#161414] border-white/5",
@@ -51,8 +51,7 @@ export default function ProjectCard({ repo }: { repo: any }) {
 			title: "text-zinc-900 font-medium group-hover:bg-gradient-to-r group-hover:from-[#f76912] group-hover:via-[#e33110] group-hover:to-[#c4150c] group-hover:bg-clip-text group-hover:text-transparent",
 			description: "text-zinc-500",
 			tag: "text-[#c4150c] border-[#e33110]/25 bg-[#f76912]/10",
-			liveLink: "text-zinc-900 hover:text-[#e33110]",
-			tutorial: "bg-gradient-to-r from-[#e33110] to-[#a50f0a] text-white font-medium tracking-wide shadow-[0_8px_30px_-6px_rgba(247,105,18,0.6)] hover:shadow-[0_10px_40px_-4px_rgba(247,105,18,0.8)] hover:brightness-110",
+			liveLink: "px-4 py-1.5 rounded-full bg-gradient-to-r from-[#e33110] to-[#a50f0a] text-white font-medium tracking-wide shadow-[0_8px_30px_-6px_rgba(247,105,18,0.6)] hover:shadow-[0_10px_40px_-4px_rgba(247,105,18,0.8)] hover:brightness-110",
 		},
 	};
 	const t = themes[repo.theme] ?? themes.default;
@@ -62,10 +61,8 @@ export default function ProjectCard({ repo }: { repo: any }) {
 			key={repo.id}
 			className={`project-card group relative rounded-2xl flex flex-col overflow-hidden border ${t.card}`}
 		>
-			{t.accentBar && <div className={`h-1 ${t.accentBar}`} />}
-
 			{/* Card Header */}
-			<div className={`px-7 py-5 border-b ${t.divider} flex items-center justify-between`}>
+			<div className={`px-7 py-5 ${t.accentBar ? "" : `border-b ${t.divider}`} flex items-center justify-between`}>
 				{repo.logo ? (
 					// eslint-disable-next-line @next/next/no-img-element
 					<img src={repo.logo} alt={`${repo.name} logo`} className="w-8 h-8 rounded-lg" />
@@ -86,6 +83,7 @@ export default function ProjectCard({ repo }: { repo: any }) {
 					<span>Updated {new Date(repo.updated_at).toLocaleDateString("en-US", { month: "short", year: "numeric" })}</span>
 				</span>
 			</div>
+			{t.accentBar && <div className={`h-1 ${t.accentBar}`} />}
 
 			{/* Content */}
 			<div className="p-7 flex flex-col flex-1">
@@ -115,7 +113,7 @@ export default function ProjectCard({ repo }: { repo: any }) {
 							href={repo.homepage}
 							target="_blank"
 							rel="noopener noreferrer"
-							className={`text-xs font-medium ${t.liveLink} transition-colors flex items-center gap-1.5`}
+							className={`text-xs font-medium ${t.liveLink} transition-all duration-200 flex items-center gap-1.5`}
 						>
 							Live Site
 						</Link>
@@ -136,7 +134,7 @@ export default function ProjectCard({ repo }: { repo: any }) {
 							href={repo.video_tutorial}
 							target="_blank"
 							rel="noopener noreferrer"
-							className={`absolute top-4 right-0 z-20 text-[11px] px-3 py-1.5 rounded-full transition-all duration-200 ${t.tutorial}`}
+							className={`absolute top-4 right-0 z-20 text-[11px] px-3 py-1.5 rounded-full transition-all duration-200 ${t.tutorial ?? themes.default.tutorial}`}
 						>
 							Tutorial
 						</Link>
