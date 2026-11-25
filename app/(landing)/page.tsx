@@ -1,6 +1,7 @@
 
 import HeroSection from "./HeroSection"
 import RecentProjectsSection from "./RecentProjectsSection"
+import ExperienceSection from "./ExperienceSection"
 import ContactSection from "./ContactSection"
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
     <>
         <HeroSection />
         <RecentProjectsSection />
+        <ExperienceSection />
         <ContactSection />
     </>
   )

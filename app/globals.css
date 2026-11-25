@@ -1,1 +1,36 @@
 @import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* Site accent: navy (#1E3A5F) — swap these values to re-theme the whole site.
+   600 is the main color (buttons); lighter steps are for tints, rules and borders. */
+@theme {
+  --color-accent-50: #f3f7fb;
+  --color-accent-100: #e3ebf5;
+  --color-accent-200: #c7d6ea;
+  --color-accent-300: #9bb4d3;
+  --color-accent-400: #5a7fae;
+  --color-accent-500: #2f5584;
+  --color-accent-600: #1e3a5f;
+  --color-accent-700: #172e4c;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* keep anchored sections clear of the fixed nav */
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: #fff;
+  color: var(--color-zinc-900);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--color-accent-100);
+  color: var(--color-zinc-900);
+}

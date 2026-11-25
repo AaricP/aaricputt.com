@@ -4,6 +4,12 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 
+const navLinks = [
+    { label: "Home", href: "/" },
+    { label: "Projects", href: "/projects" },
+    { label: "Resume", href: "/resume" },
+];
+
 export default function Navigation() {
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
@@ -12,6 +18,7 @@ export default function Navigation() {
 
     const handleContactClick = (e: React.MouseEvent) => {
         e.preventDefault();
+        setMenuOpen(false);
         if (pathname === "/") {
             document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
         } else {
@@ -20,99 +27,100 @@ export default function Navigation() {
     };
 
     useEffect(() => {
-        const handleScroll = () => setScrolled(window.scrollY > 40);
-        window.addEventListener("scroll", handleScroll);
+        const handleScroll = () => setScrolled(window.scrollY > 8);
+        handleScroll();
+        window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    useEffect(() => {
-        setMenuOpen(false);
-    }, [pathname]);
+    const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
 
-    const navLinks = [
-        { label: "Home", href: "/" },
-        { label: "My Resume", href: "/resume" },
-        { label: "Projects", href: "/projects" },
-    ];
     return (
         <>
-            {/* NAV */}
-            <nav className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-10 py-5 transition-all duration-300 ${scrolled ? "bg-[#0f0e0e]/90 backdrop-blur-md border-b border-white/5" : ""}`}>
-                <Link href="/" className="font-syne gradient-text font-extrabold text-xl tracking-tight shrink-0">AP</Link>
+            <nav
+                className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-200 ${
+                    scrolled || menuOpen ? "bg-white/85 backdrop-blur-md border-zinc-200" : "bg-white/0 border-transparent"
+                }`}
+            >
+                <div className="mx-auto max-w-6xl px-6 md:px-10 h-16 flex items-center justify-between">
+                    <Link href="/" className="font-semibold tracking-tight text-zinc-900 text-[15px]">
+                        Aaric Putt
+                    </Link>
 
-                {/* Desktop links */}
-                <ul className="hidden md:flex gap-10 list-none">
-                    {navLinks.map((s) => {
-                        const isActive = s.href === "/" ? pathname === "/" : pathname.startsWith(s.href);
-                        return (
+                    {/* Desktop links */}
+                    <ul className="hidden md:flex items-center gap-8 list-none">
+                        {navLinks.map((s) => (
                             <li key={s.label}>
                                 <Link
                                     href={s.href}
-                                    className={`transition-colors text-sm font-medium capitalize tracking-wide ${isActive ? "text-white" : "text-white/50 hover:text-white"}`}
+                                    aria-current={isActive(s.href) ? "page" : undefined}
+                                    className={`text-sm transition-colors ${
+                                        isActive(s.href) ? "text-zinc-900 font-medium" : "text-zinc-500 hover:text-zinc-900"
+                                    }`}
                                 >
                                     {s.label}
-                                    {isActive && <span className="block h-px bg-gradient-to-r from-[#ff7c5c] to-[#ff5f7e] mt-0.5" />}
                                 </Link>
                             </li>
-                        );
-                    })}
-                </ul>
+                        ))}
+                    </ul>
 
-                {/* Desktop contact button */}
-                <button onClick={handleContactClick} className="hidden md:block bg-gradient-to-br from-[#ff7c5c] to-[#ff5f7e] text-white text-sm font-medium px-5 py-2.5 hover:opacity-85 transition-opacity">
-                    Contact me
-                </button>
+                    <button
+                        onClick={handleContactClick}
+                        className="hidden md:inline-flex items-center rounded-full bg-accent-600 text-white text-sm font-medium px-4 py-2 hover:bg-accent-700 transition-colors"
+                    >
+                        Contact
+                    </button>
 
-                {/* Hamburger / X button */}
-                <button
-                    onClick={() => setMenuOpen(!menuOpen)}
-                    className="md:hidden p-2 text-white/70 hover:text-white transition-colors"
-                    aria-label="Toggle menu"
-                >
-                    {menuOpen ? (
-                        <svg width="28" height="28" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-                            <line x1="4" y1="4" x2="16" y2="16" />
-                            <line x1="16" y1="4" x2="4" y2="16" />
+                    {/* Hamburger / X button */}
+                    <button
+                        onClick={() => setMenuOpen(!menuOpen)}
+                        className="md:hidden -mr-2 p-2 text-zinc-700 hover:text-zinc-900 transition-colors"
+                        aria-label="Toggle menu"
+                        aria-expanded={menuOpen}
+                    >
+                        <svg width="22" height="22" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+                            {menuOpen ? (
+                                <>
+                                    <line x1="5" y1="5" x2="15" y2="15" />
+                                    <line x1="15" y1="5" x2="5" y2="15" />
+                                </>
+                            ) : (
+                                <>
+                                    <line x1="3" y1="7" x2="17" y2="7" />
+                                    <line x1="3" y1="13" x2="17" y2="13" />
+                                </>
+                            )}
                         </svg>
-                    ) : (
-                        <svg width="28" height="28" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
-                            <line x1="3" y1="6" x2="17" y2="6" />
-                            <line x1="3" y1="10" x2="17" y2="10" />
-                            <line x1="3" y1="14" x2="17" y2="14" />
-                        </svg>
-                    )}
-                </button>
+                    </button>
+                </div>
             </nav>
 
             {/* Mobile menu */}
             {menuOpen && (
-                <div className="fixed inset-0 z-40 bg-[#0f0e0e] flex flex-col px-10 pt-28 pb-10 md:hidden">
-                    <ul className="flex flex-col gap-2 flex-1 list-none">
-                        {navLinks.map((s) => {
-                            const isActive = s.href === "/" ? pathname === "/" : pathname.startsWith(s.href);
-                            return (
-                                <li key={s.label}>
-                                    <Link
-                                        href={s.href}
-                                        className="flex items-center py-6 border-b border-white/5"
-                                    >
-                                        <span className={`font-syne font-extrabold text-4xl tracking-tight transition-colors ${isActive ? "gradient-text" : "text-white/50 hover:text-white"}`}>
-                                            {s.label}
-                                        </span>
-                                    </Link>
-                                </li>
-                            );
-                        })}
+                <div className="fixed inset-0 top-16 z-40 bg-white flex flex-col px-6 pt-4 pb-10 md:hidden">
+                    <ul className="flex flex-col flex-1 list-none">
+                        {navLinks.map((s) => (
+                            <li key={s.label}>
+                                <Link
+                                    href={s.href}
+                                    onClick={() => setMenuOpen(false)}
+                                    className={`block py-4 border-b border-zinc-100 text-2xl font-semibold tracking-tight ${
+                                        isActive(s.href) ? "text-zinc-900" : "text-zinc-400"
+                                    }`}
+                                >
+                                    {s.label}
+                                </Link>
+                            </li>
+                        ))}
                     </ul>
-
                     <button
-                        onClick={(e) => { handleContactClick(e); setMenuOpen(false); }}
-                        className="bg-gradient-to-br from-[#ff7c5c] to-[#ff5f7e] text-white text-sm font-medium px-8 py-4 text-center hover:opacity-85 transition-opacity"
+                        onClick={handleContactClick}
+                        className="rounded-full bg-accent-600 text-white text-sm font-medium px-6 py-3.5 hover:bg-accent-700 transition-colors"
                     >
-                        Contact me
+                        Contact
                     </button>
                 </div>
             )}
         </>
-    )
+    );
 }

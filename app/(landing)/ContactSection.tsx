@@ -1,6 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import Eyebrow from "./Eyebrow";
+
+const inputClass =
+	"w-full rounded-lg border border-zinc-300 bg-white px-4 py-3 text-sm text-zinc-900 placeholder:text-zinc-400 outline-none transition-colors focus:border-accent-600 focus:ring-2 focus:ring-accent-600/20";
 
 export default function ContactSection() {
 	const [sent, setSent] = useState(false);
@@ -17,65 +21,70 @@ export default function ContactSection() {
 	};
 
 	return (
-		<section id="contact" className="bg-[#1a1818] px-10 py-28">
-			<div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-start">
+		<section id="contact" className="border-t border-zinc-200 py-20 md:py-28">
+			<div className="mx-auto max-w-6xl px-6 md:px-10 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start">
 				<div>
-					<div className="flex items-center gap-3 text-[#ff7c5c] text-xs font-medium tracking-[0.2em] uppercase mb-3">
-						<span className="block w-6 h-px bg-[#ff7c5c]" />
-						Get In Touch
-					</div>
-
-					<h2 className="font-syne font-extrabold text-[clamp(2rem,4vw,3rem)] tracking-[-0.03em] leading-tight mb-6">
-						Looking for a developer?
-					</h2>
-
-					<p className="text-white/45 leading-relaxed font-light mb-8 max-w-sm">
-						Whether you’re hiring for a team, exploring collaborations, or need help bringing a project to life, I’d love to connect.
+					<Eyebrow>Get in touch</Eyebrow>
+					<h2 className="text-3xl md:text-4xl font-semibold tracking-tight mb-5">Looking for a developer?</h2>
+					<p className="text-zinc-600 leading-relaxed max-w-sm mb-8">
+						Whether you&apos;re hiring for a team, exploring collaborations, or need help bringing a project to life, I&apos;d love to connect.
 					</p>
+					<div className="flex gap-5 text-sm font-medium">
+						<a href="https://linkedin.com/in/aaricputt" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-zinc-900 transition-colors">
+							LinkedIn ↗
+						</a>
+						<a href="https://github.com/aaricp" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-zinc-900 transition-colors">
+							GitHub ↗
+						</a>
+					</div>
 				</div>
 
 				<div>
 					{sent ? (
-						<div className="text-[#ff7c5c] text-sm p-4 border border-[#ff7c5c]/20 bg-[#ff7c5c]/5">
-							Thanks for reaching out — I'll get back to you soon.
+						<div className="rounded-xl border border-zinc-200 bg-zinc-50 p-6 text-sm text-zinc-700">
+							Thanks for reaching out — I&apos;ll get back to you soon.
 						</div>
 					) : (
 						<form onSubmit={handleSubmit} className="flex flex-col gap-5">
-							{[
-								{ label: "Your Name", type: "text", key: "name", placeholder: "John Doe" },
-								{ label: "Email", type: "email", key: "email", placeholder: "john@email.com" },
-							].map((f) => (
-								<div key={f.key} className="flex flex-col gap-1.5">
-									<label className="text-white/30 text-xs tracking-widest uppercase">{f.label}</label>
-									<input
-										type={f.type}
-										placeholder={f.placeholder}
-										required
-										className="bg-white/4 border border-white/8 text-white placeholder-white/20 px-4 py-3 text-sm font-light outline-none focus:border-[#ff7c5c]/40 transition-colors"
-										onChange={(e) => setFormData({ ...formData, [f.key]: e.target.value })}
-									/>
-								</div>
-							))}
+							<div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+								{[
+									{ label: "Name", type: "text", key: "name", placeholder: "Jane Doe" },
+									{ label: "Email", type: "email", key: "email", placeholder: "jane@company.com" },
+								].map((f) => (
+									<div key={f.key} className="flex flex-col gap-1.5">
+										<label htmlFor={`contact-${f.key}`} className="text-sm font-medium text-zinc-700">{f.label}</label>
+										<input
+											id={`contact-${f.key}`}
+											type={f.type}
+											placeholder={f.placeholder}
+											required
+											className={inputClass}
+											onChange={(e) => setFormData({ ...formData, [f.key]: e.target.value })}
+										/>
+									</div>
+								))}
+							</div>
 							<div className="flex flex-col gap-1.5">
-								<label className="text-white/30 text-xs tracking-widest uppercase">Message</label>
+								<label htmlFor="contact-message" className="text-sm font-medium text-zinc-700">Message</label>
 								<textarea
+									id="contact-message"
 									placeholder="Tell me about the role or opportunity..."
 									required
 									rows={5}
-									className="bg-white/4 border border-white/8 text-white placeholder-white/20 px-4 py-3 text-sm font-light outline-none focus:border-[#ff7c5c]/40 transition-colors resize-y"
+									className={`${inputClass} resize-y`}
 									onChange={(e) => setFormData({ ...formData, message: e.target.value })}
 								/>
 							</div>
 							<button
 								type="submit"
-								className="self-start bg-gradient-to-br from-[#ff7c5c] to-[#ff5f7e] text-white font-medium px-8 py-3.5 hover:opacity-85 transition-opacity"
+								className="self-start rounded-full bg-accent-600 text-white text-sm font-medium px-6 py-3 hover:bg-accent-700 transition-colors"
 							>
-								Send Message
+								Send message
 							</button>
 						</form>
 					)}
 				</div>
 			</div>
 		</section>
-	)
+	);
 }

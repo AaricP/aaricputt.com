@@ -1,12 +1,14 @@
-import { getRepos, getLanguages } from "@/lib/projects";
+import { getReposPinnedFirst, getLanguages } from "@/lib/projects";
+import { arbol3d } from "@/lib/arbol3d";
 import ProjectCard from "../ProjectCard";
+import Eyebrow from "../Eyebrow";
 
 export default async function ProjectsPage() {
-	const repos = await getRepos();
+	// pinned GitHub repos first, then the rest by most recent push
+	const repos = await getReposPinnedFirst();
 
 	const reposWithLanguages = await Promise.all(
 		repos
-			.filter((repo: any) => repo.name !== "aaricputt.com")
 			.map(async (repo: any) => ({
 				...repo,
 				languages: await getLanguages(repo.name)
@@ -15,61 +17,33 @@ export default async function ProjectsPage() {
 
 	return (
 		<>
-			<style>{`
-                @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap');
-                .font-syne { font-family: 'Syne', sans-serif; }
-                .gradient-text {
-                    background: linear-gradient(135deg, #ff7c5c, #ff5f7e);
-                    -webkit-background-clip: text;
-                    -webkit-text-fill-color: transparent;
-                }
-                .project-card {
-                    transition: transform 0.2s ease, box-shadow 0.2s ease;
-                }
-                .project-card:hover {
-                    transform: translateY(-4px);
-                    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-                }
-            `}</style>
-
 			{/* HEADER */}
-			<div className="px-10 pt-36 pb-12 border-b border-white/5">
-				<div className="flex items-center gap-3 text-[#ff7c5c] text-xs font-medium tracking-[0.2em] uppercase mb-4">
-					<span className="block w-6 h-px bg-[#ff7c5c]" />
-					Portfolio
-				</div>
-				<div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-					<h1 className="font-syne font-extrabold text-[clamp(2.5rem,6vw,5rem)] tracking-[-0.03em] leading-[0.95]">
-						My <span className="gradient-text">Projects.</span>
-					</h1>
-					<p className="text-white/40 text-sm max-w-xs leading-relaxed font-light">
+			<div className="mx-auto max-w-6xl px-6 md:px-10 pt-32 md:pt-40 pb-12">
+				<Eyebrow>Portfolio</Eyebrow>
+				<div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+					<h1 className="text-4xl md:text-5xl font-semibold tracking-[-0.035em]">Projects</h1>
+					<p className="text-zinc-500 text-sm max-w-xs leading-relaxed">
 						A collection of personal and academic projects built across different stacks.
 					</p>
 				</div>
 			</div>
 
 			{/* GRID */}
-			<div className="px-10 py-16">
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+			<div className="mx-auto max-w-6xl px-6 md:px-10 pb-24">
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
 					<ProjectCard
 						repo={{
-							id: "Arbol3D",
-							name: "Arbol3D",
+							id: arbol3d.name,
+							name: arbol3d.name,
 							theme: "arbol3d",
-							logo: "/images/arbol3d.svg",
-							description:
-								"Assembly instructions for laser-cut crafts. Model a project in 3D, break it into step-by-step build instructions, and export numbered, nested cut sheets (SVG, DXF, PDF) ready for the laser.",
-							created_at: "2026-02-01T00:00:00Z",
-							updated_at: new Date().toISOString(),
-							homepage: "https://arbol3d.com",
+							logo: arbol3d.logo,
+							description: `${arbol3d.tagline} ${arbol3d.summary}`,
+							created_at: arbol3d.startedAt,
+							period: arbol3d.period,
+							homepage: arbol3d.url,
+							demo: arbol3d.demoUrl,
 							language: "TypeScript",
-							languages: {
-								'Next.js': 1,
-								TypeScript: 1,
-								React: 1,
-								ThreeJS: 1,
-								TailwindCSS: 1,
-							},
+							languages: Object.fromEntries(arbol3d.stack.map((s) => [s, 1])),
 						}}
 					/>
 					{reposWithLanguages.map((repo: any) => (
