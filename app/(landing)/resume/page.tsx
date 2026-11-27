@@ -4,10 +4,10 @@ import { arbol3d } from "@/lib/arbol3d";
 export default function AboutPage() {
 	// Mirrors public/resume.pdf
 	const skills = {
-		Languages: ["JavaScript", "TypeScript", "HTML", "CSS", "Python", "SQL", "Java"],
+		Languages: ["JavaScript", "TypeScript", "HTML", "CSS", "Python", "SQL", "Java", "C#"],
 		Databases: ["SQL Server", "PostgreSQL", "MongoDB", "Microsoft Access"],
-		Frameworks: ["React", "Next.js", "Express.js", "Node.js"],
-		Tools: ["Git", "GitHub", "Azure DevOps", "Visual Studio", "AWS", "SSMS", "Supabase", "Excel", "Tableau"],
+		Frameworks: ["React", "Next.js", "Express.js", "Node.js", "Three.js", "Tailwind CSS", "Prisma"],
+		Tools: ["Git", "GitHub", "Azure DevOps", "Vercel", "Supabase", "AWS (EC2)", "Visual Studio", "SSMS"],
 	};
 
 	const projects: { name: string; url?: string; period: string; stack: string; bullets: string[] }[] = [
@@ -17,9 +17,10 @@ export default function AboutPage() {
 			period: arbol3d.period,
 			stack: arbol3d.stack.join(", "),
 			bullets: [
-				"Built a full-stack 3D laser cutter design tool for real-time 3D part assembly and manipulation",
-				"Created an SVG importer to parse and normalize SVG files to millimeters for laser-cutter-compatible export",
-				"Designed a soft-delete and cascade-delete system with full recovery for shapes, parts, and projects",
+				"Designed, developed, and launched a full-stack SaaS platform that converts 3D laser-cut designs into assembly instructions and numbered, laser-ready cut sheets",
+				"Developed a real-time 3D workspace for creating, assembling, and manipulating parts",
+				"Designed a relational PostgreSQL database architecture using Prisma, including soft deletion and data recovery",
+				"Implemented Supabase authentication and global state management using Zustand",
 			],
 		},
 		{
@@ -27,19 +28,8 @@ export default function AboutPage() {
 			period: "Apr 2025",
 			stack: "MERN Stack (MongoDB, Express.js, React, Node.js)",
 			bullets: [
-				"Developed and deployed a full-stack app with React, Express.js, and MongoDB, hosted on AWS EC2",
-				"Created RESTful APIs with Express and Mongoose for frontend-backend data flow",
-				"Built responsive UI with React and MUI, including forms, dynamic rendering, and state management",
-			],
-		},
-		{
-			name: "Conversion of Static HTML to Dynamic Express.js MVC Web App",
-			period: "Feb 2025",
-			stack: "Express.js",
-			bullets: [
-				"Modularized components and integrated Sequelize with a SQL database for data management",
-				"Built RESTful routes, linked controllers and models, and rendered dynamic content with EJS templates",
-				"Developed a user-generated content feature with a post form for data submission",
+				"Developed and deployed full-stack app with React, Express.js, and MongoDB, hosted on AWS EC2",
+				"Built RESTful APIs with Express and Mongoose and a responsive UI with React and MUI",
 			],
 		},
 	];
@@ -65,8 +55,8 @@ export default function AboutPage() {
 									linkedin.com/in/aaricputt
 								</a>
 								<span className="text-zinc-300">·</span>
-								<a href="https://github.com/aaricp" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-900 transition-colors">
-									github.com/aaricp
+								<a href="https://github.com/AaricP" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-900 transition-colors">
+									github.com/AaricP
 								</a>
 							</div>
 						</div>
@@ -172,8 +162,7 @@ export default function AboutPage() {
 						</div>
 						<ul className="flex flex-col gap-1">
 							{[
-								"Led and collaborated with diverse teams while teaching and mentoring full-time for two years",
-								"Developed strong communication and leadership skills in English and Spanish",
+								"Served a two-year full-time mission in Argentina and California, teaching and mentoring others while developing leadership, teamwork, and communication skills in English and Spanish",
 							].map((b, i) => (
 								<li key={i} className={bullet}>{dash}{b}</li>
 							))}

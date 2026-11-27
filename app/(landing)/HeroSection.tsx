@@ -3,12 +3,12 @@ import { arbol3d } from "@/lib/arbol3d";
 
 export default function HeroSection() {
 	return (
-		<section id="about" className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28">
+		<section id="about" className="relative overflow-hidden pt-28 pb-20 md:pt-40 md:pb-28">
 			{/* soft accent glow */}
 			<div aria-hidden className="pointer-events-none absolute -top-48 -right-40 h-[640px] w-[640px] rounded-full bg-accent-100/70 blur-3xl" />
 			<div aria-hidden className="pointer-events-none absolute top-1/2 -left-56 h-[420px] w-[420px] rounded-full bg-accent-100/60 blur-3xl" />
 
-			<div className="relative mx-auto max-w-6xl px-6 md:px-10 grid grid-cols-1 md:grid-cols-[1.45fr_1fr] gap-12 md:gap-16 items-center">
+			<div className="relative mx-auto max-w-6xl px-6 md:px-10 grid grid-cols-1 md:grid-cols-[1.45fr_1fr] gap-8 md:gap-16 items-center">
 				{/* Content */}
 				<div className="order-2 md:order-1">
 					<a
@@ -34,12 +34,15 @@ export default function HeroSection() {
 
 					<div className="flex flex-col gap-4 text-zinc-600 leading-relaxed max-w-xl">
 						<p>
-							I&apos;m a Software Support Technician at <span className="text-zinc-900 font-medium">EFORCE</span>, where I write SQL Server reporting used by 400+ law-enforcement agencies and track bugs down through the database and source code. Before that, I spent 3.5+ years at <span className="text-zinc-900 font-medium">ATAT Inc.</span> managing a ~1,000-product database behind $7M+ in revenue.
+							I&apos;m a Software Support Technician at <span className="text-zinc-900 font-medium">EFORCE</span>, where I automate SQL Server reporting for 400+ law-enforcement agencies, ship fixes to the production C# app, and track bugs down through the database and source code. Before that, I spent 3.5+ years at <span className="text-zinc-900 font-medium">ATAT Inc.</span> managing a 1,000+ SKU inventory database for an Amazon business doing $7M+ a year.
 						</p>
 						<p>
 							Outside of work, I&apos;m building{" "}
 							<a href={arbol3d.url} target="_blank" rel="noopener noreferrer" className="text-zinc-900 font-medium underline decoration-[#f76912]/50 underline-offset-4 hover:decoration-[#f76912] transition-colors">Arbol3D</a>
-							, a full-stack 3D design tool for laser-cut crafts. B.A. in Information Systems from Utah State University, minor in Data Analytics.
+							, a full-stack 3D design tool for laser-cut crafts.
+						</p>
+						<p>
+							I graduated from <span className="text-zinc-900 font-medium">Utah State University</span> in 2025 with a B.A. in Information Systems, with an emphasis in Web Development and a minor in Data Analytics.
 						</p>
 					</div>
 
@@ -57,13 +60,13 @@ export default function HeroSection() {
 				</div>
 
 				{/* Photo — tall portrait, natural aspect */}
-				<div className="order-1 md:order-2 flex justify-start md:justify-center">
-					<div className="relative w-52 md:w-full md:max-w-[380px]">
+				<div className="order-1 md:order-2 flex justify-center">
+					<div className="relative w-40 sm:w-48 md:w-full md:max-w-[380px]">
 						{/* eslint-disable-next-line @next/next/no-img-element */}
 						<img
 							src="/images/profile.jpeg"
 							alt="Aaric Putt"
-							className="relative w-full aspect-[119/199] max-h-[640px] object-cover object-top rounded-2xl ring-1 ring-black/5 shadow-[0_2px_6px_rgba(0,0,0,0.06),0_30px_60px_-20px_rgba(0,0,0,0.4)]"
+							className="relative w-full aspect-[4/5] md:aspect-[119/199] max-h-[640px] object-cover object-top rounded-2xl ring-1 ring-black/5 shadow-[0_2px_6px_rgba(0,0,0,0.06),0_30px_60px_-20px_rgba(0,0,0,0.4)]"
 						/>
 					</div>
 				</div>
