@@ -6,21 +6,18 @@ import { Analytics } from "@vercel/analytics/next";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://aaricputt.com"),
   title: "Aaric Putt",
-  description: "My name is Aaric, and I'm a web developer specializing in full-stack development. I have a B.A. in Information Systems from Utah State University, and experience working with a variety of technologies across the stack. I care about writing code that makes people's lives easier.",
+  description: "Full-stack developer working where software meets data. Software Support Technician at EFORCE, building Arbol3D, and a Utah State University Information Systems graduate.",
   openGraph: {
-    title: "Aaric Putt - Web Developer",
-    description: "Web developer specializing in full-stack development. B.A. in Information Systems from Utah State University.",
+    title: "Aaric Putt — Full-stack developer",
+    description: "Full-stack developer working where software meets data.",
     url: "https://aaricputt.com",
     siteName: "Aaric Putt",
-    images: [
-      {
-        url: "https://aaricputt.com/images/og-image.png",
-        width: 1200,
-        height: 630,
-      },
-    ],
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
   },
 }
 

@@ -8,7 +8,7 @@ export default function HeroSection() {
 			<div aria-hidden className="pointer-events-none absolute -top-48 -right-40 h-[640px] w-[640px] rounded-full bg-accent-100/70 blur-3xl" />
 			<div aria-hidden className="pointer-events-none absolute top-1/2 -left-56 h-[420px] w-[420px] rounded-full bg-accent-100/60 blur-3xl" />
 
-			<div className="relative mx-auto max-w-6xl px-6 md:px-10 grid grid-cols-1 md:grid-cols-[1.45fr_1fr] gap-8 md:gap-16 items-center">
+			<div className="relative mx-auto max-w-6xl px-6 md:px-10 grid grid-cols-1 md:grid-cols-[1.3fr_1fr] gap-8 md:gap-16 items-center">
 				{/* Content */}
 				<div className="order-2 md:order-1">
 					<a
@@ -59,14 +59,14 @@ export default function HeroSection() {
 					</div>
 				</div>
 
-				{/* Photo — tall portrait, natural aspect */}
+				{/* Photo — 2:3 portrait, cropped from the top so the tie stays in frame */}
 				<div className="order-1 md:order-2 flex justify-center">
-					<div className="relative w-40 sm:w-48 md:w-full md:max-w-[380px]">
+					<div className="relative w-56 sm:w-64 md:w-full md:max-w-[440px]">
 						{/* eslint-disable-next-line @next/next/no-img-element */}
 						<img
 							src="/images/profile.jpeg"
 							alt="Aaric Putt"
-							className="relative w-full aspect-[4/5] md:aspect-[119/199] max-h-[640px] object-cover object-top rounded-2xl ring-1 ring-black/5 shadow-[0_2px_6px_rgba(0,0,0,0.06),0_30px_60px_-20px_rgba(0,0,0,0.4)]"
+							className="relative w-full aspect-[2/3] object-cover object-top rounded-2xl ring-1 ring-black/5 shadow-[0_2px_6px_rgba(0,0,0,0.06),0_30px_60px_-20px_rgba(0,0,0,0.4)]"
 						/>
 					</div>
 				</div>
